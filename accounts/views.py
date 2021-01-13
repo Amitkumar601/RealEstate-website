@@ -16,7 +16,7 @@ def login(request):
         else:
             messages.error(request,'invalid credantials')
             return redirect('login')
-        #return redirect('login')
+        
     else:
         return render(request,'accounts/login.html')
 def register(request):
@@ -41,10 +41,7 @@ def register(request):
                     #looks like good
                     user=User.objects.create_user(first_name=first_name,last_name=last_name,
                     username=username,password=password,email=email)
-                    #login after registration
-                    #auth.login(request,user)
-                    #messages.success(request,'you are logged in')
-                    #return redirect('home')
+                   
                     user.save()
                     messages.success(request,'you are successfully registered ')
                     return redirect('login')
